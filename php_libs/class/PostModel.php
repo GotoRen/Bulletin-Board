@@ -32,7 +32,6 @@ class PostModel extends BaseModel {
             $sql = "SELECT * FROM post ORDER BY date DESC";
             $stmh = $this->pdo->prepare($sql);
             $stmh->execute();
-            //$data = $stmh->fetchAll(PDO::FETCH_CLASS);
         } catch (PDOException $Exception) {
             print "エラー：" . $Exception->getMessage();
         }

@@ -61,13 +61,11 @@
             </tr>
         </table>
     </div>
-
     <hr>
-    <h1>Hello</h1>
-    <hr>
-    <h1>サクッと掲示板（DB版）</h1>
 
-    {* エラーメッセージを表示する処理 *}
+    <h1>Bulletin-Board</h1>
+
+    {* エラーメッセージの表示 *}
     {if $error_message}
         <ul class="error-message">
             {foreach from=$error_message item=message}
@@ -76,6 +74,7 @@
         </ul>
     {/if}
 
+    {* 投稿処理 *}
     <form action="{$smarty.server.SCRIPT_NAME}" method="post">
         <table>
             <tr>
@@ -96,16 +95,12 @@
 
     <hr>
 
-    {* 掲示板データを表示する処理 *}
+    {* 掲示板データの表示 *}
     {foreach from=$bbs_list item=bbs}
         <h2>{$bbs.title|escape}</h2>
         <p>{$bbs.date|date_format:"%Y年%m月%e日 %H:%M:%S"|escape} / 投稿者：<strong>{$bbs.name|escape}</strong></p>
         <p>{$bbs.body|escape|nl2br}</p>
     {/foreach}
-
-
-
-
 
     {if ($debug_str)}
     <pre>{$debug_str}</pre>{/if}

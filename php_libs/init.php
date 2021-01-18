@@ -19,10 +19,10 @@ define("_DEBUG_MODE", false);
 // ini_set( "display_errors", "On");
 
 // 開発中
-ini_set( "error_reporting", E_ALL );
+//ini_set( "error_reporting", E_ALL );
 
 // 運用中
-//ini_set( "error_reporting", E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED );
+ini_set( "error_reporting", E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED );
 
 //----------------------------------------------------
 // データベース関連

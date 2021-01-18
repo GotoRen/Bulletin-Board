@@ -106,53 +106,33 @@ class MemberController extends BaseController {
             $this->message = 'こんばんは。今日も一日お疲れ様でした...';
         }
 
-        /********************************************************************************/
-       // error_reporting(E_ALL);           // エラーを表示
-       // ini_set('display_errors', "Off"); // 画面上のエラーを非表示設定にする
-
+        // 掲示板投稿画面
         $PostModel = new PostModel();
-        $error_message = array();
-        
-        //$mysqli = new mysqli("localhost", "root", "password", "bulletin_db");
-        //$mysqli->set_charset("UTF-8");
 
         $title = $_POST['title'];
         $name = $_POST['name'];
         $body = $_POST['body'];
+        $error_message = array();
 
-        
         if (isset($_POST['save'])) {
-            $error_message = array();
-        
+            if (!strlen($_POST['title'])) {
+                $error_message[] = "タイトルが未入力です。";
+            }
             if (!strlen($_POST['body'])) {
                 $error_message[] = "本文を入力してください。";
             }
-        
             if (!count($error_message)) {
-                $PostModel->post($title, $name, $body);
+                $PostModel->post($title, $name, $body); // 投稿DB操作
             }
         }
-
-
 
         // 掲示板データの取得
         $bbs_list = $PostModel->fetch_data();
         
-        
-
-        //require_once("../smarty/libs/Smarty.class.php");
-        //$smarty = new Smarty();               // Smartyインスタンス（$smartyオブジェクト）を作成
-        //$smarty->template_dir = "templates";  // テンプレートディレクトリの指定        
-        //$smarty->compile_dir = "templates_c"; // コンパイルディレクトリの指定
-
-        /* テンプレート変数に割り当てる */
-        $this->view->assign("error_message", $error_message);
-        $this->view->assign("bbs_list", $bbs_list);
-        //$this->view->display("bbs.html");         // テンプレートを表示
-        /********************************************************************************/
-        // 会員トップ画面
         $this->view->assign('last_name', $_SESSION[_MEMBER_AUTHINFO]['last_name']);
         $this->view->assign('first_name', $_SESSION[_MEMBER_AUTHINFO]['first_name']);
+        $this->view->assign("error_message", $error_message);
+        $this->view->assign("bbs_list", $bbs_list);
         $this->title = '会員トップ画面';
         $this->file = 'member_top.tpl';
         $this->view_display();

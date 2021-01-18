@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2021-01-18 20:01:49
+/* Smarty version 3.1.30, created on 2021-01-18 21:05:29
   from "/Applications/XAMPP/xamppfiles/htdocs/Bulletin-Board/php_libs/smarty/templates/member_top.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_60056a9d18bdc9_51574913',
+  'unifunc' => 'content_600579896ca860_40036032',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '52302ef8ad7821758b2e39be83a68841ea314c24' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/Bulletin-Board/php_libs/smarty/templates/member_top.tpl',
-      1 => 1610967579,
+      1 => 1610971527,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_60056a9d18bdc9_51574913 (Smarty_Internal_Template $_smarty_tpl) {
+function content_600579896ca860_40036032 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once '/Applications/XAMPP/xamppfiles/htdocs/Bulletin-Board/php_libs/smarty/libs/plugins/modifier.date_format.php';
 ?>
 <!DOCTYPE html>
@@ -98,11 +98,9 @@ if (!is_callable('smarty_modifier_date_format')) require_once '/Applications/XAM
             </tr>
         </table>
     </div>
+    <hr>
 
-    <hr>
-    <h1>Hello</h1>
-    <hr>
-    <h1>サクッと掲示板（DB版）</h1>
+    <h1>Bulletin-Board</h1>
 
     
     <?php if ($_smarty_tpl->tpl_vars['error_message']->value) {?>
@@ -123,6 +121,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
         </ul>
     <?php }?>
 
+    
     <form action="<?php echo $_SERVER['SCRIPT_NAME'];?>
 " method="post">
         <table>
@@ -162,10 +161,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['bbs']->value) {
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
-
-
-
-
 
 
     <?php if (($_smarty_tpl->tpl_vars['debug_str']->value)) {?>
