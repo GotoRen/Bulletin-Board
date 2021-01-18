@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2021-01-18 07:19:15
+/* Smarty version 3.1.30, created on 2021-01-18 21:16:25
   from "/Applications/XAMPP/xamppfiles/htdocs/Bulletin-Board/php_libs/smarty/templates/memberinfo_form.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_6004b7e3510331_54027237',
+  'unifunc' => 'content_60057c19786ad8_84294707',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6004b7e3510331_54027237 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60057c19786ad8_84294707 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="ja">

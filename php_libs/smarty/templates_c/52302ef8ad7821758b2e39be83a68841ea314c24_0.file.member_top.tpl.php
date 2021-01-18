@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2021-01-18 21:05:29
+/* Smarty version 3.1.30, created on 2021-01-18 21:14:10
   from "/Applications/XAMPP/xamppfiles/htdocs/Bulletin-Board/php_libs/smarty/templates/member_top.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_600579896ca860_40036032',
+  'unifunc' => 'content_60057b928a2418_43549700',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_600579896ca860_40036032 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60057b928a2418_43549700 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once '/Applications/XAMPP/xamppfiles/htdocs/Bulletin-Board/php_libs/smarty/libs/plugins/modifier.date_format.php';
 ?>
 <!DOCTYPE html>
