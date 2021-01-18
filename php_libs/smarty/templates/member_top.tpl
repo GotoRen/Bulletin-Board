@@ -8,7 +8,7 @@
 <body>
     <div style="text-align:center;">
         <hr>
-        <strong>{$title}</strong>
+        <strong style="color:red;">{$title}</strong>
         <hr>
     </div>
     <div style="text-align: left; margin-left: 5%;">
@@ -31,7 +31,7 @@
                         <!-- message -->
                         <strong>{$message}</strong>
                         {if ($body)}
-                            <div style="border: dashed 1px; padding: 10px;">
+                            <div style="background:#ced; border: dashed 1px; padding: 10px;">
                                 <div style="color:red; font-size:small; font-weight: bold;">お知らせ</div>
                                 <div style="font-size: small; font-weight: bold;">
                                     {$reg_date|date_format:"%Y年%m月%d日"}&nbsp;{$subject|escape:"html"}</div>
@@ -65,9 +65,7 @@
     <h1>Bulletin-Board</h1>
     <hr>
     <div style="text-align: left;">
-        {* <div style="background:#ced; border:1px solid #a7e;">ff</div> *}
-        <div
-            style="width: 29.5%; margin-left: 10px; padding-left: 25px; padding-bottom: 30px; border:1px solid #CCCCCC; float:left">
+        <div style="width: 29.5%; margin-left: 10px; padding-left: 25px; padding-bottom: 30px; border:1px solid #CCCCCC; float:left">
             {* 投稿処理 *}
             <form action="{$smarty.server.SCRIPT_NAME}" method="post">
                 <input type="hidden" name="name" value="{$last_name|escape:"html"} {$first_name|escape:"html"}">
