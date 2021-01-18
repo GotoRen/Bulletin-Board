@@ -1,0 +1,5 @@
+### global
+.DS_Store
+
+### cache
+php_libs/smarty/template_c/*
