@@ -1,5 +1,5 @@
 <?php
-$password = 'system';
+$password = 'password';
 
 // パスワードのハッシュ化
 function get_hashed_password($password) {
