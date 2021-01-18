@@ -114,7 +114,7 @@ class MemberController extends BaseController {
         $body = $_POST['body'];
         $error_message = array();
 
-        if (isset($_POST['save'])) {
+        if (isset($_POST['submit'])) {
             if (!strlen($_POST['title'])) {
                 $error_message[] = "タイトルが未入力です。";
             }

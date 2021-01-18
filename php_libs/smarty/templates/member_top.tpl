@@ -77,10 +77,7 @@
     {* 投稿処理 *}
     <form action="{$smarty.server.SCRIPT_NAME}" method="post">
         <table>
-            <tr>
-                <th>投稿者名</th>
-                <td><input type="text" name="name" size="30"></td>
-            </tr>
+            <input type="hidden" name="name" size="30" value="{$last_name|escape:"html"} {$first_name|escape:"html"}">
             <tr>
                 <th>タイトル</th>
                 <td><input type="text" name="title" size="50"></td>
@@ -90,7 +87,7 @@
                 <td colspan="2"><textarea name="body" cols="50 rows=" 5"></textarea></td>
             </tr>
         </table>
-        <input name="save" type="submit" value="投稿する">
+        <input name="submit" type="submit" value="投稿する">
     </form>
 
     <hr>
