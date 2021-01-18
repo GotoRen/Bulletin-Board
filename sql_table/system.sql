@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS system;
+
 CREATE TABLE system (
     id          MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
     username   	VARCHAR(50),
