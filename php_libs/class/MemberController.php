@@ -1,24 +1,18 @@
 <?php
-/* 編集済み */
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- * Description of MemberController
- *
- * @author nagatayorinobu
+ * Contents: MemberController.php
+ * Feature: 会員ページ操作
+ * @author r0719en@pluslab.org
  */
-class MemberController extends BaseController
-{
+
+class MemberController extends BaseController {
+    
     //----------------------------------------------------
     // 会員用メニュー
     //----------------------------------------------------
-    public function run()
-    {
-        // セッション開始　認証に利用します。
+    public function run() {
+        // セッション開始
         $this->auth = new Auth();
         $this->auth->set_authname(_MEMBER_AUTHINFO);
         $this->auth->set_sessname(_MEMBER_SESSNAME);
@@ -33,11 +27,8 @@ class MemberController extends BaseController
         }
     }
 
-    //----------------------------------------------------
     // 会員用メニュー
-    //----------------------------------------------------
-    public function menu_member()
-    {
+    public function menu_member() {
         switch ($this->type) {
             case "logout":
                 $this->auth->logout();
@@ -54,11 +45,8 @@ class MemberController extends BaseController
         }
     }
 
-    //----------------------------------------------------
     // ゲスト用メニュー
-    //----------------------------------------------------
-    public function menu_guest()
-    {
+    public function menu_guest() {
         switch ($this->type) {
             case "regist":
                 $this->screen_regist();
@@ -70,11 +58,9 @@ class MemberController extends BaseController
                 $this->screen_login();
         }
     }
-    //----------------------------------------------------
+    
     // ログイン画面表示
-    //----------------------------------------------------
-    public function screen_login()
-    {
+    public function screen_login() {
         $this->form->addElement('text', 'username',     ['size' => 15, 'maxlength' => 50], [ 'label' => 'ユーザ名']);
         $this->form->addElement('password', 'password', ['size' => 15, 'maxlength' => 50], [ 'label' => 'パスワード']);
         $this->form->addElement('submit', 'submit', ['value' =>'ログイン']);
@@ -84,11 +70,13 @@ class MemberController extends BaseController
         $this->view_display();
     }
 
-    public function do_authenticate()
-    {
-        // データベースを操作します。
+    // ログイン処理
+    public function do_authenticate() {
+
+        // DB参照
         $MemberModel = new MemberModel();
         $userdata = $MemberModel->get_authinfo($_POST['username']);
+
         if (!empty($userdata['password']) && $this->auth->check_password($_POST['password'], $userdata['password'])) {
             $this->auth->auth_ok($userdata);
             $this->screen_top();
@@ -98,20 +86,19 @@ class MemberController extends BaseController
         }
     }
 
-    //----------------------------------------------------
     // トップ画面
-    //----------------------------------------------------
-    public function screen_top()
-    {
-        // 通知機能を追加
+    public function screen_top() {
+
+        // 通知機能を表示
         $NoticeModel = new NoticeModel;
         $noticedata = $NoticeModel->get_notice_data_id('1');
         $this->view->assign('subject', $noticedata['subject']);
         $this->view->assign('body',    $noticedata['body']);
         $this->view->assign('reg_date',$noticedata['reg_date']);
-        // 時間帯によって挨拶を変える
+
+        // メッセージを表示（時間帯によって変更）
         $hour = date("H");
-        if($hour >= 0 && $hour < 10 ) {
+        if ($hour >= 0 && $hour < 10 ) {
             $this->message = 'おはようございます。今日も一日頑張りましょう！';
         } else if ($hour >= 10 && $hour < 18) {
             $this->message = 'こんにちは。元気にお過ごしですか？';
@@ -127,15 +114,11 @@ class MemberController extends BaseController
         $this->view_display();
     }
 
-    //----------------------------------------------------
-    // 会員情報画面（INSERT）
-    //----------------------------------------------------
-    /*** Checked by Ren ***/
-    public function screen_regist($auth = "")
-    {
+    // INSERT: 会員情報登録
+    public function screen_regist($auth = "") {
         $btn = "";
         $btn2 = "";
-        $this->file = "memberinfo_form.tpl"; // デフォルト
+        $this->file = "memberinfo_form.tpl";
 
         // フォーム要素のデフォルト値を設定
         $date_defaults = [
@@ -160,7 +143,7 @@ class MemberController extends BaseController
         } else {
             if ($this->action == "confirm") {
                 $this->title = '確認画面';
-                $this->next_type = 'regist'; // hiddenタグに埋め込む
+                $this->next_type = 'regist';     // hiddenタグに埋め込む
                 $this->next_action = 'complete'; // hiddenタグに埋め込む
                 $this->form->toggleFrozen(true); // toggleFrozen(true): 入力欄を消して入力値のみを表示する
                 $btn = '登録する';
@@ -173,10 +156,9 @@ class MemberController extends BaseController
                     $btn = '確認画面へ';
                 } else {
                     if ($this->action == "complete" && isset($_POST['submit']) && $_POST['submit'] == '登録する') {
-                        // データベースを操作します。
                         $PrememberModel = new PrememberModel();
-                        // データベースを操作します。
                         $MemberModel = new MemberModel();
+
                         $userdata = $this->form->getValue();
                         if ($MemberModel->check_username($userdata) || $PrememberModel->check_username($userdata)) {
                             $this->title = '新規登録画面';
@@ -185,7 +167,7 @@ class MemberController extends BaseController
                             $this->next_action = 'confirm';
                             $btn = '確認画面へ';
                         } else {
-                            // システム側から利用するときに利用
+                            // 管理者側から登録する場合に使用
                             if ($this->is_system && is_object($auth)) {
                                 $userdata['password'] = $auth->get_hashed_password($userdata['password']);
                             } else {
@@ -201,7 +183,8 @@ class MemberController extends BaseController
                                 $this->title = '登録完了画面';
                                 $this->message = "登録を完了しました。";
                             // prememberテーブルにデータをINSERTする（データを一時的に登録して、メールを送信する）
-                            } else { 
+                            } else {
+                                // SHA256を使ってランダムなlink_passを生成
                                 $userdata['link_pass'] = hash('sha256', uniqid(rand(), 1));
                                 $PrememberModel->regist_premember($userdata);
                                 $this->mail_to_premember($userdata);
@@ -221,20 +204,15 @@ class MemberController extends BaseController
         $this->view_display();
     }
 
-    //----------------------------------------------------
-    // 会員情報の修正（UPDATE）
-    //----------------------------------------------------
-    /*** Checked by Ren ***/
-    public function screen_modify($auth = "")
-    {
+    // UPDATE: 会員情報修正
+    public function screen_modify($auth = "") {
         $btn = "";
         $btn2 = "";
         $this->file = "memberinfo_form.tpl";
 
-        // データベースを操作します。
         $MemberModel = new MemberModel();
         $PrememberModel = new PrememberModel(); 
-        // 管理側から登録データを確認する場合
+        // 管理者側から登録データを確認する場合
         if ($this->is_system && $this->action == "form") {
             $_SESSION[_MEMBER_AUTHINFO] = $MemberModel->get_member_data_id($_GET['id']);
         }
@@ -294,7 +272,7 @@ class MemberController extends BaseController
                         } else {
                             $this->title = '更新完了画面';
                             $userdata['id'] = $_SESSION[_MEMBER_AUTHINFO]['id'];
-                            // システム側から利用するときに利用
+                            // 管理者側から修正する場合に使用
                             if ($this->is_system && is_object($auth)) {
                                 $userdata['password'] = $auth->get_hashed_password($userdata['password']);
                             } else {
@@ -326,14 +304,11 @@ class MemberController extends BaseController
         $this->view_display();
     }
 
+    // DELETE: 会員情報削除
+    public function screen_delete() {
 
-    //----------------------------------------------------
-    // 削除画面（DELETE）
-    //----------------------------------------------------
-    public function screen_delete()
-    {
-        // データベースを操作します。
         $MemberModel = new MemberModel();
+
         if ($this->action == "confirm") {
             if ($this->is_system) {
                 $_SESSION[_MEMBER_AUTHINFO] = $MemberModel->get_member_data_id($_GET['id']);
@@ -366,50 +341,40 @@ class MemberController extends BaseController
         $this->view_display();
     }
 
-
-
-    //----------------------------------------------------
-    // メール関係
-    //----------------------------------------------------
-    //
-    // 仮登録者へメール送信
-    //
-    /*** Checked by Ren ***/
-    public function mail_to_premember($userdata)
-    {
+    // 確認メールの送信処理
+    public function mail_to_premember($userdata) {
 
         $path = pathinfo(_SCRIPT_NAME)['dirname'];
-        //echo $path; // $path = /Management_System/htdocs
+        //echo $path; // $path = /Bulletin-Board/htdocs
 
         // メールアドレス
         $to = $userdata['username']; 
         // 件名
-        $subject = "会員登録の確認";
+        $subject = "会員登録の確認";   
         // 本文
         /**
          * $_SERVER['SERVER_NAME'] = localhost
          * $path = /Management_System/htdocs
          **/
-        $message = <<<EOM
-    {$userdata['username']}様
+        $message = 
+        <<<EOM
+            {$userdata['username']} 様
 
-    会員登録ありがとうございます。
-    下のリンクにアクセスして会員登録を完了してください。
+            会員登録ありがとうございます。
+            下のリンクにアクセスして会員登録を完了してください。
 
-    http://{$_SERVER['SERVER_NAME']}{$path}/premember.php?username={$userdata['username']}&link_pass={$userdata['link_pass']}
+            http://{$_SERVER['SERVER_NAME']}{$path}/premember.php?username={$userdata['username']}&link_pass={$userdata['link_pass']}
 
-    このメールに覚えがない場合はメールを削除してください。
+            このメールに覚えがない場合はメールを削除してください。
+            なお、本メールは送信専用となっております。
 
 
-    --
-    会員システム
+            --
+            会員システム
+        EOM;
 
-EOM;
         $add_header = "";
-
-        //$add_header .= "From: xxxx@xxxxxxx\nCc: xxxx@xxxxxxx";
-
         mb_send_mail($to, $subject, $message, $add_header); // mb_send_mailメソッドによってメールを送信する
-
     }
+    
 }
