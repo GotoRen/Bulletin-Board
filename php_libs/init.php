@@ -29,7 +29,7 @@ ini_set( "error_reporting", E_ALL );
 //----------------------------------------------------
 
 // データベース接続ユーザー名
-define("_DB_USER", "sample");
+define("_DB_USER", "root");
 
 // データベース接続パスワード
 define("_DB_PASS", "password");
@@ -38,7 +38,7 @@ define("_DB_PASS", "password");
 define("_DB_HOST", "localhost");
 
 // データベース名
-define("_DB_NAME", "sampledb");
+define("_DB_NAME", "bulletin_db");
 
 // データベースの種類
 define("_DB_TYPE", "mysql");
