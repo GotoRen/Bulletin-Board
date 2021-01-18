@@ -66,28 +66,31 @@
     <h1>Bulletin-Board</h1>
 
     {* エラーメッセージの表示 *}
-    {if $error_message}
+    {* {if $error_message}
         <ul class="error-message">
             {foreach from=$error_message item=message}
                 <li>{$message|escape}</li>
             {/foreach}
         </ul>
-    {/if}
+    {/if} *}
 
     {* 投稿処理 *}
     <form action="{$smarty.server.SCRIPT_NAME}" method="post">
         <table>
-            <input type="hidden" name="name" size="30" value="{$last_name|escape:"html"} {$first_name|escape:"html"}">
+            <tr>
+                <th>投稿者名</th>
+                <td><input type="hidden" name="name" size="30" value="{$last_name|escape:"html"} {$first_name|escape:"html"}"></td>
+            </tr>
             <tr>
                 <th>タイトル</th>
-                <td><input type="text" name="title" size="50"></td>
+                <td><input type="text" name="title" size="50" required></td>
             </tr>
             <tr>
                 <th>本文</th>
-                <td colspan="2"><textarea name="body" cols="50 rows=" 5"></textarea></td>
+                <td colspan="2"><textarea name="body" cols="50 rows="5" required></textarea></td>
             </tr>
         </table>
-        <input name="submit" type="submit" value="投稿する">
+        <input name="save" type="submit" value="投稿する">
     </form>
 
     <hr>

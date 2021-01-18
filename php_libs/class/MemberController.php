@@ -112,18 +112,19 @@ class MemberController extends BaseController {
         $title = $_POST['title'];
         $name = $_POST['name'];
         $body = $_POST['body'];
-        $error_message = array();
+        //$error_message = array();
 
-        if (isset($_POST['submit'])) {
-            if (!strlen($_POST['title'])) {
-                $error_message[] = "タイトルが未入力です。";
-            }
-            if (!strlen($_POST['body'])) {
-                $error_message[] = "本文を入力してください。";
-            }
-            if (!count($error_message)) {
-                $PostModel->post($title, $name, $body); // 投稿DB操作
-            }
+        if (isset($_POST['save'])) {
+            // if (!strlen($_POST['title'])) {
+            //     $error_message[] = "タイトルが未入力です。";
+            // }
+            // if (!strlen($_POST['body'])) {
+            //     $error_message[] = "本文を入力してください。";
+            // }
+            // if (!count($error_message)) {
+            //     $PostModel->post($title, $name, $body); // 投稿DB操作
+            // }
+            $PostModel->post($title, $name, $body); // 投稿DB操作
         }
 
         // 掲示板データの取得
@@ -131,7 +132,7 @@ class MemberController extends BaseController {
         
         $this->view->assign('last_name', $_SESSION[_MEMBER_AUTHINFO]['last_name']);
         $this->view->assign('first_name', $_SESSION[_MEMBER_AUTHINFO]['first_name']);
-        $this->view->assign("error_message", $error_message);
+        //$this->view->assign("error_message", $error_message);
         $this->view->assign("bbs_list", $bbs_list);
         $this->title = '会員トップ画面';
         $this->file = 'member_top.tpl';
