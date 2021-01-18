@@ -5,7 +5,7 @@
     <title>{$title}</title>
 </head>
 
-<body>
+<body style="background:#ffff00;">
     <div style="text-align:center;">
         <hr>
         <strong style="color:red;">{$title}</strong>
@@ -65,7 +65,7 @@
     <h1>Bulletin-Board</h1>
     <hr>
     <div style="text-align: left;">
-        <div style="width: 29.5%; margin-left: 10px; padding-left: 25px; padding-bottom: 30px; border:1px solid #CCCCCC; float:left">
+        <div style="width: 29.5%; margin-left: 10px; padding-left: 25px; padding-bottom: 30px; border:1px solid #CCCCCC; background:#ced; float:left">
             {* 投稿処理 *}
             <form action="{$smarty.server.SCRIPT_NAME}" method="post">
                 <input type="hidden" name="name" value="{$last_name|escape:"html"} {$first_name|escape:"html"}">
@@ -78,7 +78,7 @@
                 <input name="save" type="submit" value="投稿する">
             </form>
         </div>
-        <div style="width: 65%; margin-right: 10px; padding-left: 25px; border:1px solid #CCCCCC;  float:right">
+        <div style="width: 65%; margin-right: 10px; padding-left: 25px; border:1px solid #CCCCCC; background:#ced; float:right">
             {* 掲示板データの表示 *}
             {foreach from=$bbs_list item=bbs}
                 <h2>{$bbs.title|escape}</h2>
