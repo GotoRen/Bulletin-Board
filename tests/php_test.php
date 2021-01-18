@@ -4,10 +4,3 @@ echo $_SERVER['SCRIPT_NAME'];
 
 echo " time(): ";
 echo time();
-
-    
-    
-
-
-
-
