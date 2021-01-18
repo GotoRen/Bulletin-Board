@@ -1,15 +1,11 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Contents: KenController.php
+ * Feature: 県名リスト操作
+ * @author r0719en@pluslab.org
  */
 
-/**
- * Description of KenController
- *
- * @author nagatayorinobu
- */
 class KenController extends BaseController {
-    //put your code here
+    
 }

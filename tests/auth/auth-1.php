@@ -10,33 +10,31 @@ $smarty->cache_dir    = _SMARTY_CACHE_DIR;
 
 session_start();
 
-if (!empty($_POST['type']) &&  $_POST['type'] == 'authenticate' ) {
+if (!empty($_POST['type']) &&  $_POST['type'] == 'authenticate') {
     // 認証機能
-    if( $_POST['username']== 'user' && $_POST['password'] == 'pass' ){
-        $_SESSION['id'] = 1;// ログインしたらセッションIDをセット（数値ならなんでもOK）
+    if ($_POST['username'] == 'user' && $_POST['password'] == 'pass') {
+        $_SESSION['id'] = 1; // ログインしたらセッションIDをセット（数値ならなんでもOK）
     }
-}else if( !empty($_GET['type']) && $_GET['type'] == 'logout'){
+} else if (!empty($_GET['type']) && $_GET['type'] == 'logout') {
     $_SESSION = []; // ログアウトした場合、セッションIDを削除
 }
 
-
-if(!empty($_SESSION) && $_SESSION['id'] >= 1){ // セッションIDがセットされている場合 → ログイン
+if (!empty($_SESSION) && $_SESSION['id'] >= 1) { // セッションIDがセットされている場合 → ログイン
     // 認証済み
     $smarty->assign("title", "会員ページ");
     $file = 'testauth.tpl';
-
-}else{ // セッションIDがセットされていない場合 → ゲストページを再表示
+} else { // セッションIDがセットされていない場合 → ゲストページを再表示
     // 未認証
     $smarty->assign("title", "ゲストページ");
     $smarty->assign("type", "authenticate"); // testlogin.tplに『value = {$type} = authenticateとして紐付ける』
     $file = 'testlogin.tpl';
 
     $form = new HTML_QuickForm2('Form');
-    $form->addElement('text','username', ['size' => 15, 'maxlength' => 50], ['label' => 'ユーザー名']);
-    $form->addElement('password','password', ['size' => 15, 'maxlength' => 50], ['label' => 'パスワード']);
-    $form->addElement('submit','submit', ['value' => 'ログイン']);
+    $form->addElement('text', 'username', ['size' => 15, 'maxlength' => 50], ['label' => 'ユーザー名']);
+    $form->addElement('password', 'password', ['size' => 15, 'maxlength' => 50], ['label' => 'パスワード']);
+    $form->addElement('submit', 'submit', ['value' => 'ログイン']);
 
-    HTML_QuickForm2_Renderer::register('smarty','HTML_QuickForm2_Renderer_Smarty');
+    HTML_QuickForm2_Renderer::register('smarty', 'HTML_QuickForm2_Renderer_Smarty');
     $renderer  = HTML_QuickForm2_Renderer::factory('smarty');
     $renderer->setOption('old_compat', true);
     $renderer->setOption('group_errors', false);

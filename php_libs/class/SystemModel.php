@@ -1,20 +1,15 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Contents: SystemModel.php
+ * Feature: 管理者ページ DB操作
+ * @author r0719en@pluslab.org
  */
 
-/**
- * Description of SystemModel
- *
- * @author nagatayorinobu
- */
 class SystemModel extends BaseModel {
-    //----------------------------------------------------
-    // 管理者情報をユーザー名で検索
-    //----------------------------------------------------
-    public function get_authinfo($username){
+    
+    // 管理者情報の検索（ユーザ名 a.k.a メールアドレス）
+    public function get_authinfo($username) { // $username = メールアドレス
         $data = [];
         try {
             $sql= "SELECT * FROM system WHERE username = :username limit 1";
@@ -27,4 +22,5 @@ class SystemModel extends BaseModel {
         }
         return $data;
     }
+    
 }

@@ -1,7 +1,9 @@
 <?php
-/*************************************************
- * 会員本登録用スクリプト
- * 
+
+/**
+ * Contents: premember.php
+ * Feature: 会員本登録用スクリプト
+ * @author r0719en@pluslab.org
  */
 
 define('_ROOT_DIR', __DIR__ . '/');

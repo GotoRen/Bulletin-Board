@@ -8,5 +8,5 @@ CREATE TABLE notice (
     PRIMARY KEY (id)
 );
 
-INSERT  INTO notice (subject, body, reg_date )  VALUES('会員向けお知らせ',   'まだまだ暑い日が続きますね。',   now() );
+INSERT  INTO notice (subject, body, reg_date )  VALUES('会員向けお知らせ',   'ここに通知メッセージを入力',   now() );
 
