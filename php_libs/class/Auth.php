@@ -43,7 +43,6 @@ class Auth {
         // セッション開始
         session_start();
     }
-    
 
     // 認証情報の確認
     public function check() {
@@ -69,7 +68,6 @@ class Auth {
         return $hash;
     }
     
-    
     // 認証処理
     public function check_password($password, $hashed_password) {
         // パスワードが一致したらtrueを返す
@@ -78,7 +76,6 @@ class Auth {
         }
     }
     
-
     // 認証情報の取得
     public function auth_ok($userdata) {
         session_regenerate_id(true);
@@ -91,7 +88,6 @@ class Auth {
         return 'ユーザ名かパスワードが間違っています。'."\n";
     }
     
-
     // 認証情報を破棄
     public function logout(){
 

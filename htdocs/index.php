@@ -1,7 +1,9 @@
 <?php
-/*************************************************
- * 会員実行スクリプト
- * 
+
+/**
+ * Contents: index.php
+ * Feature: 会員実行スクリプト
+ * @author r0719en@pluslab.org
  */
 
 define('_ROOT_DIR', __DIR__ . '/');
