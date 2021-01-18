@@ -13,5 +13,4 @@ CREATE TABLE member (
     PRIMARY KEY(id)
 );
 
-INSERT INTO member (username, password, last_name, first_name, birthday, ken, reg_date, cancel)
-VALUES ('user', '$2y$10$jUa?IP/qDbBFIJFEPfd/W2ewsClzoGPrbxCaHOdWjwQFUNRGoKT4DS', '○田', '○夫', '20130101', '1', now(), NULL);
+INSERT INTO member (username, password, last_name, first_name, birthday, ken, reg_date, cancel) VALUES ('user', '$2y$10$jUa?IP/qDbBFIJFEPfd/W2ewsClzoGPrbxCaHOdWjwQFUNRGoKT4DS', '○田', '○夫', '20130101', '1', now(), NULL);

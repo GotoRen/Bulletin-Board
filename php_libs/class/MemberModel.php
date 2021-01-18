@@ -58,6 +58,7 @@ class MemberModel extends BaseModel {
         } catch (PDOException $Exception) {
             print "エラー：" . $Exception->getMessage();
         }
+
         return $data;
     }
 
