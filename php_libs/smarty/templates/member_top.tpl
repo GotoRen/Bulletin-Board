@@ -62,46 +62,34 @@
         </table>
     </div>
     <hr>
-
     <h1>Bulletin-Board</h1>
-
-    {* エラーメッセージの表示 *}
-    {if $error_message}
-        <ul class="error-message">
-            {foreach from=$error_message item=message}
-                <li>{$message|escape}</li>
-            {/foreach}
-        </ul>
-    {/if}
-
-    {* 投稿処理 *}
-    <form action="{$smarty.server.SCRIPT_NAME}" method="post">
-        <table>
-            <tr>
-                <th>投稿者名</th>
-                <td><input type="text" name="name" size="30"></td>
-            </tr>
-            <tr>
-                <th>タイトル</th>
-                <td><input type="text" name="title" size="50"></td>
-            </tr>
-            <tr>
-                <th>本文</th>
-                <td colspan="2"><textarea name="body" cols="50 rows=" 5"></textarea></td>
-            </tr>
-        </table>
-        <input name="save" type="submit" value="投稿する">
-    </form>
-
     <hr>
-
-    {* 掲示板データの表示 *}
-    {foreach from=$bbs_list item=bbs}
-        <h2>{$bbs.title|escape}</h2>
-        <p>{$bbs.date|date_format:"%Y年%m月%e日 %H:%M:%S"|escape} / 投稿者：<strong>{$bbs.name|escape}</strong></p>
-        <p>{$bbs.body|escape|nl2br}</p>
-    {/foreach}
-
+    <div style="text-align: left;">
+        {* <div style="background:#ced; border:1px solid #a7e;">ff</div> *}
+        <div
+            style="width: 29.5%; margin-left: 10px; padding-left: 25px; padding-bottom: 30px; border:1px solid #CCCCCC; float:left">
+            {* 投稿処理 *}
+            <form action="{$smarty.server.SCRIPT_NAME}" method="post">
+                <input type="hidden" name="name" value="{$last_name|escape:"html"} {$first_name|escape:"html"}">
+                <p>タイトル</p>
+                <input type="text" name="title" size="50" required>
+                <p>本文</p>
+                <textarea name="body" cols="50" rows="10" required></textarea>
+                <br>
+                <br>
+                <input name="save" type="submit" value="投稿する">
+            </form>
+        </div>
+        <div style="width: 65%; margin-right: 10px; padding-left: 25px; border:1px solid #CCCCCC;  float:right">
+            {* 掲示板データの表示 *}
+            {foreach from=$bbs_list item=bbs}
+                <h2>{$bbs.title|escape}</h2>
+                <p>{$bbs.date|date_format:"%Y年%m月%e日 %H:%M:%S"|escape} / 投稿者：<strong>{$bbs.name|escape}</strong></p>
+                <p>{$bbs.body|escape|nl2br}</p>
+            {/foreach}
+        </div>
+    </div>
+    
     {if ($debug_str)}
     <pre>{$debug_str}</pre>{/if}
 </body>

@@ -9,7 +9,7 @@
 class PostModel extends BaseModel {
 
     // 掲示板に投稿
-    public function post($title, $name, $body) {
+    public function regist_post_data($title, $name, $body) {
         try {
             $this->pdo->beginTransaction();
             $sql = "INSERT INTO post (date, title, name, body) VALUES (:date, :title, :name, :body)";
@@ -19,7 +19,7 @@ class PostModel extends BaseModel {
             $stmh->bindValue(':name', $name, PDO::PARAM_STR);
             $stmh->bindValue(':body', $body, PDO::PARAM_STR);
             $stmh->execute();
-            $this ->pdo->commit();
+            $this->pdo->commit();
         } catch (PDOException $Exception) {
             $this->pdo->rollBack();
             print "エラー：" . $Exception->getMessage();
@@ -27,7 +27,7 @@ class PostModel extends BaseModel {
     }
 
     // 掲示板データの取得
-    public function fetch_data() {
+    public function fetch_post_data() {
         try {
             $sql = "SELECT * FROM post ORDER BY date DESC";
             $stmh = $this->pdo->prepare($sql);
