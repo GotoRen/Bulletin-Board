@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2021-01-18 18:31:42
+/* Smarty version 3.1.30, created on 2021-01-18 20:01:49
   from "/Applications/XAMPP/xamppfiles/htdocs/Bulletin-Board/php_libs/smarty/templates/member_top.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_6005557e44bf69_92026194',
+  'unifunc' => 'content_60056a9d18bdc9_51574913',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '52302ef8ad7821758b2e39be83a68841ea314c24' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/Bulletin-Board/php_libs/smarty/templates/member_top.tpl',
-      1 => 1610962300,
+      1 => 1610967579,
       2 => 'file',
     ),
   ),
@@ -20,15 +20,17 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6005557e44bf69_92026194 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60056a9d18bdc9_51574913 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once '/Applications/XAMPP/xamppfiles/htdocs/Bulletin-Board/php_libs/smarty/libs/plugins/modifier.date_format.php';
 ?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <title><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
 </title>
 </head>
+
 <body>
     <div style="text-align:center;">
         <hr>
@@ -97,10 +99,71 @@ if (!is_callable('smarty_modifier_date_format')) require_once '/Applications/XAM
         </table>
     </div>
 
-        <hr>
-        <h1>Hello</h1>
-        <hr>
+    <hr>
+    <h1>Hello</h1>
+    <hr>
+    <h1>サクッと掲示板（DB版）</h1>
+
     
+    <?php if ($_smarty_tpl->tpl_vars['error_message']->value) {?>
+        <ul class="error-message">
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['error_message']->value, 'message');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['message']->value) {
+?>
+                <li><?php echo htmlspecialchars($_smarty_tpl->tpl_vars['message']->value, ENT_QUOTES, 'UTF-8', true);?>
+</li>
+            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
+        </ul>
+    <?php }?>
+
+    <form action="<?php echo $_SERVER['SCRIPT_NAME'];?>
+" method="post">
+        <table>
+            <tr>
+                <th>投稿者名</th>
+                <td><input type="text" name="name" size="30"></td>
+            </tr>
+            <tr>
+                <th>タイトル</th>
+                <td><input type="text" name="title" size="50"></td>
+            </tr>
+            <tr>
+                <th>本文</th>
+                <td colspan="2"><textarea name="body" cols="50 rows=" 5"></textarea></td>
+            </tr>
+        </table>
+        <input name="save" type="submit" value="投稿する">
+    </form>
+
+    <hr>
+
+    
+    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['bbs_list']->value, 'bbs');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['bbs']->value) {
+?>
+        <h2><?php echo htmlspecialchars($_smarty_tpl->tpl_vars['bbs']->value['title'], ENT_QUOTES, 'UTF-8', true);?>
+</h2>
+        <p><?php echo htmlspecialchars(smarty_modifier_date_format($_smarty_tpl->tpl_vars['bbs']->value['date'],"%Y年%m月%e日 %H:%M:%S"), ENT_QUOTES, 'UTF-8', true);?>
+ / 投稿者：<strong><?php echo htmlspecialchars($_smarty_tpl->tpl_vars['bbs']->value['name'], ENT_QUOTES, 'UTF-8', true);?>
+</strong></p>
+        <p><?php echo nl2br(htmlspecialchars($_smarty_tpl->tpl_vars['bbs']->value['body'], ENT_QUOTES, 'UTF-8', true));?>
+</p>
+    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
+
 
 
 
