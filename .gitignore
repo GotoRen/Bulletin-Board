@@ -2,4 +2,4 @@
 .DS_Store
 
 ### cache
-php_libs/smarty/template_c/*
+php_libs/smarty/templates_c/*
