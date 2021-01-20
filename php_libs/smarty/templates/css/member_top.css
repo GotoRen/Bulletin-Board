@@ -1,51 +1,120 @@
 @charset "utf-8";
 body {
-    background: yellow;
+    /* background: #333333; */
+    background-image: url("../images/bg.png");
+    color: black;
+}
+
+.line-type-a {
+    width: 40%;
+    height: 2px;
+    background: linear-gradient(to right, sandybrown, blanchedalmond, pink);
+}
+
+.line-type-b {
+    width: 95%;
+    height: 1px;
+    background: linear-gradient(to right, orange, yellow, magenta);
+}
+
+.line-type-c {
+    width: 95%;
+    height: 2px;
+    background: linear-gradient(to right, black, red, blue);
 }
 
 #title {
     color: blue;
+    font-size: 20px;
 }
 
-#area {
-    border: inset 5px;
-    border-color: blue;
-    /* 外側: 上 右 下 左  */
-    margin: 15px 100px 15px 100px;
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    padding-left: 0px;
+h3 {
+    color: darkolivegreen;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: 'Homemade Apple', cursive;
 }
 
-#post-form {
-    height: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: 20px;
-    padding: 30px 0 30px 30px;
-    border: inset 1px black;
-    background: #ced;
+.post {
+    color: yellow;
+    font-size: 20px;
 }
 
-#content {
-    height: 800px;
-    background: red;
-    /* margin: 0 0 0 20px; */
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 20px;
-    margin-right: auto;
-    padding: 20px 0 0 20px;
-    border: inset 3px blue;
-    overflow: scroll;
+h5 {
+    color: magenta;
 }
 
 .name {
     font-size: 13px;
+    color: #ccff99;
 }
 
 .text {
     font-size: 15px;
+    color: #FFF;
+    /* 内側: 上 右 下 左  */
+    padding: 0 0 0 30px;
+}
+
+.info {
+    font-size: 20px;
+}
+
+#menu {
+    border: inset 2px black;
+    /* 内側: 上 右 下 左  */
+    padding: 30px 0 30px 40px;
+}
+
+#area {
+    /* 色 */
+    background: #ced;
+    /* 枠線 */
+    border: inset 8px green;
+    /* 外側: 上 右 下 左  */
+    margin: 15px 80px 15px 80px;
+    /* 中央揃え  */
+    display: flex;
+    justify-content: center;
+}
+
+#post-form {
+    /* 色 */
+    background: #333333;
+    /* 枠線 */
+    border: dashed 5px orange;
+    /* サイズ */
+    height: 100%;
+    /* 外側: 上 右 下 左  */
+    margin: 10px 20px 10px auto;
+    /* 内側: 上 右 下 左  */
+    padding: 30px 0 30px 30px;
+}
+
+#content {
+    /* 色 */
+    background: #333333;
+    /* 枠線 */
+    border: dashed 5px orange;
+    /* サイズ */
+    height: 800px;
+    /* 外側: 上 右 下 左  */
+    margin: 10px auto 10px 20px;
+    /* 内側: 上 右 下 左  */
+    padding: 20px 0 0 20px;
+    /* スクロールバー */
+    overflow: scroll;
+}
+
+#footer {
+    border-top: 1px dotted black;
+    text-align: center;
+    color: black;
+}
+
+address {
+    text-align: center;
+    font-size: 13px;
+    color: gray;
 }
