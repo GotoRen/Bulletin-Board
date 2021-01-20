@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div style="text-align:center;">
+    <div style="text-align:center; margin-bottom: 50px;">
         <hr class="line-type-a"> 
         <strong id="title">{$title}</strong>
         <hr class="line-type-a"> 
@@ -33,7 +33,7 @@
             <strong>{$message}</strong>
             {if ($body)}
                 <div style="background:#ced; border: dashed 1px; padding: 10px;">
-                    <div style="color:red; font-size:small; font-weight: bold;">*-* お知らせ *-*</div>
+                    <div style="color:red; font-size:small; font-weight: bold;">📝 お知らせ </div>
                     <div style="font-size: small; font-weight: bold;">
                         {$reg_date|date_format:"%Y年%m月%d日"}&nbsp;{$subject|escape:"html"}</div>
                     <div style="font-size: small;">{$body|escape:"html"}</div>
@@ -59,7 +59,7 @@
             <!----------------->
         </div>
     </div>
-    <h3 class="text-center">Bulletin-Board</h1>
+    <h3 class="text-center">🌱 Bulletin-Board 🌱</h1>
     <hr class="line-type-c">
     <div id="area" class="row">
         <div id="post-form" class="col-md-4">
@@ -79,7 +79,7 @@
         <div id="content" class="col-md-7">
             {* 掲示板データの表示 *}
             {foreach from=$bbs_list item=bbs}
-                <h5>>> {$bbs.title|escape}</h5>
+                <h5>🚀>> {$bbs.title|escape}</h5>
                 <p class="name">{$bbs.date|date_format:"%Y年%m月%e日 %H:%M:%S"|escape} / 投稿者：<strong>{$bbs.name|escape}</strong>
                 </p>
                 <p class="text">{$bbs.body|escape|nl2br}</p>

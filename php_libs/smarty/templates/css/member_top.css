@@ -24,7 +24,7 @@ body {
 }
 
 #title {
-    color: blue;
+    color: #cc0099;
     font-size: 20px;
 }
 
@@ -71,7 +71,7 @@ h5 {
     /* 色 */
     background: #ced;
     /* 枠線 */
-    border: inset 8px green;
+    border: inset 8px #33cc66;
     /* 外側: 上 右 下 左  */
     margin: 15px 80px 15px 80px;
     /* 中央揃え  */
