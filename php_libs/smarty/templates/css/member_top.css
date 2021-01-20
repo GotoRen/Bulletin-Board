@@ -1,0 +1,51 @@
+@charset "utf-8";
+body {
+    background: yellow;
+}
+
+#title {
+    color: blue;
+}
+
+#area {
+    border: inset 5px;
+    border-color: blue;
+    /* 外側: 上 右 下 左  */
+    margin: 15px 100px 15px 100px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding-left: 0px;
+}
+
+#post-form {
+    height: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: 20px;
+    padding: 30px 0 30px 30px;
+    border: inset 1px black;
+    background: #ced;
+}
+
+#content {
+    height: 800px;
+    background: red;
+    /* margin: 0 0 0 20px; */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: auto;
+    padding: 20px 0 0 20px;
+    border: inset 3px blue;
+    overflow: scroll;
+}
+
+.name {
+    font-size: 13px;
+}
+
+.text {
+    font-size: 15px;
+}
