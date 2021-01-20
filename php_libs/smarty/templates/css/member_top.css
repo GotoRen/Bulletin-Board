@@ -1,6 +1,5 @@
 @charset "utf-8";
 body {
-    /* background: #333333; */
     background-image: url("../images/bg.png");
     color: black;
 }
@@ -53,7 +52,6 @@ h5 {
 .text {
     font-size: 15px;
     color: #FFF;
-    /* 内側: 上 右 下 左  */
     padding: 0 0 0 30px;
 }
 
