@@ -15,8 +15,6 @@
     - PHP: 7.4.9
     - Server version: 10.4.14-MariaDB
     - Smarty version: 3.1.30
-  - WHOAMI：`localhost`
-  - Loopback ADDR：`127.0.0.1`
 - DB構築
   - `/Applications/XAMPP/xamppfiles/bin`配下
   - `$ mysql -u root -p`  
