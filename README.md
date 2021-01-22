@@ -67,7 +67,7 @@
       CREATE TABLE notice (
           id          MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
           subject   	VARCHAR(256),
-          body   	    TEXT,
+          body        TEXT,
           reg_date   	DATETIME,
           PRIMARY KEY (id)
       );
